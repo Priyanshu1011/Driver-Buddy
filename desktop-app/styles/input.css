@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --bg-grid-stroke: #d6d3d7;
+  --bg-grid-fill: #37a3fb8b;
+  --bg-gradient-1: #45affa;
+  --bg-gradient-2: #bc51ff47;
+
+  --header-name-color: #5c00a7;
+  --primary-color: #7300ff;
+  --secondary-color: #9110e0;
+  --tertiary-color: #f30b0b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-grid-stroke: #d6d3d7;
+    --bg-grid-fill: #5a008e;
+    --bg-gradient-1: #9730d2;
+    --bg-gradient-2: rgba(77, 8, 189, 0.882);
+
+    --header-name-color: #ffffff;
+    --primary-color: #ffbebe;
+    --secondary-color: #afd5fb;
+    --tertiary-color: #b0fcce;
+  }
+}
+
+/* TEXT */
+
+.header_color {
+  color: var(--header-name-color);
+}
+
+.primary_color {
+  color: var(--primary-color);
+}
+
+.secondary_color {
+  color: var(--secondary-color);
+}
+
+.tertiary_color {
+  color: var(--tertiary-color);
+}
+
+.bg_grid {
+  background-size: 4px 4px;
+  background-image: linear-gradient(
+      to right,
+      var(--bg-grid-stroke) 1px,
+      var(--bg-grid-fill) 1px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--bg-grid-stroke) 1px,
+      var(--bg-grid-fill) 1px
+    );
+}
+
+.bg_gradient {
+  background-image: radial-gradient(
+    ellipse,
+    var(--bg-gradient-1),
+    var(--bg-gradient-2)
+  );
+}

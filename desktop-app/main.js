@@ -1,30 +1,67 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-//const {app, BrowserWindow} = require('electron')
+// Imports
+const {
+  app,
+  BrowserWindow,
+  Notification,
+  nativeImage,
+} = require("electron/main");
 const path = require("path");
 const url = require("url");
+
+// Global variables
+const NOTIFICATION_TITLE = "Driver Buddy started successfully";
+const NOTIFICATION_BODY = "Driver Buddy application is up and running!";
+const appIconPath = path.join(__dirname, "images/logo-circle.png");
+const appIcon = nativeImage.createFromPath(appIconPath);
+
+function showNotification() {
+  new Notification({
+    title: NOTIFICATION_TITLE,
+    body: NOTIFICATION_BODY,
+  }).show();
+}
 
 let win;
 
 function createWindow() {
-  win = new BrowserWindow({ width: 800, height: 600 });
+  // Initializes the application window
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false,
+    icon: appIcon,
+  });
 
+  // Loads the application's content
   win.loadURL(
     url.format({
-      pathname: path.join(__dirname, "index.html"),
+      pathname: path.join(__dirname, "pages/home/index.html"),
       protocol: "file:",
       slashes: true,
     })
   );
+
+  // Displays the application window after it's loaded
+  win.once("ready-to-show", () => {
+    win.show();
+  });
+
+  showNotification();
 
   win.on("closed", () => {
     win = null;
   });
 }
 
-app.on("ready", createWindow);
+// Driver function
+const driver = () => {
+  createWindow();
+};
 
+// Calls the driver function when the app is ready to be launched
+app.whenReady().then(driver);
+
+// Cross-platform differences
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
@@ -32,7 +69,7 @@ app.on("window-all-closed", () => {
 });
 
 app.on("activate", () => {
-  if (win === null) {
+  if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
 });
