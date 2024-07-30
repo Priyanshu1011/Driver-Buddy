@@ -11,7 +11,7 @@ async function fetchLiveVideo() {
     // const response = await fetch(LiveVideoAPIURL);
     // const videoStream = await response.blob();
     // const videoURL = URL.createObjectURL(videoStream);
-    const videoURL = "../../assets/video/sample-head-pose.mp4";
+    const videoURL = "../../assets/video/sample-face-drowsiness-detection.mp4";
     liveVideoElement.src = videoURL;
   } catch (error) {
     console.error("Error fetching live video:", error);

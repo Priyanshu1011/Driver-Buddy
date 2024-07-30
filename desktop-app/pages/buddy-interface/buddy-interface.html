@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Secure Copilot - Buddy Interface</title>
+    <title>Secure Copilot - Live Interface</title>
     <link rel="stylesheet" href="../../styles/output.css" />
     <style>
       /* Add custom styles for the voice animation if necessary */
@@ -26,6 +26,47 @@
           background-position: 0% 50%;
         }
       }
+
+      /* Circle sound wave animation */
+      #voice_container {
+        width: 600px;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .voice_circle {
+        border-radius: 50%;
+        background-color: rgb(227, 98, 0);
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        opacity: 0;
+        animation: scaleIn 4s infinite cubic-bezier(0.36, 0.11, 0.89, 0.32);
+      }
+
+      .voice_item {
+        z-index: 100;
+        padding: 5px;
+      }
+
+      .voice_item img {
+        width: 150px;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.5, 0.5);
+          opacity: 0.5;
+        }
+        to {
+          transform: scale(2, 2);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -43,14 +84,14 @@
           Secure Copilot
         </h1> -->
       </section>
-      <div class="flex flex-col justify-center gap-y-10 w-full">
+      <div class="flex flex-col justify-center items-center gap-y-10 w-full">
         <!-- <span><a href="../home/index.html" class="button tertiary_color">Back to Home</a></span> -->
         <h2
           class="flex flex-row justify-center items-center primary_color text-4xl font-semibold text-center"
         >
-          Buddy Interface
+          Live Interface
         </h2>
-        <section class="flex flex-row justify-center gap-x-10 w-full">
+        <section class="flex flex-col md:flex-row justify-center gap-y-10 md:gap-x-20 md:gap-y-0 w-full">
           <!-- Chatgpt starts -->
           <!-- <div
             class="bg-white shadow-lg rounded-lg flex"
@@ -58,23 +99,37 @@
           <!-- Chatgpt ends -->
 
           <!-- Left side: Live Video [Video Frame] -->
-          <div class="max-w-1/2 p-2">
+          <div class="min-w-3/12 px-6">
             <h2 class="text-xl font-bold mb-4 secondary_color">
               Live Video Of The Driver
             </h2>
             <video
               id="liveVideo"
-              class="w-2/3 bg-gray-200 rounded-lg"
+              class="bg-gray-200 rounded-lg"
               controls
-              width="720"
+              width="400"
               autoplay
             ></video>
           </div>
           <!-- Right side: Voice Visualization and Output [Companion animation for voice output] -->
-          <div class="w-1/2 p-2">
-            <h2 class="text-xl font-bold mb-4 secondary_color">Secure Copilot</h2>
-            <div id="voiceAnimation" class="voice-animation mb-4"></div>
-            <audio id="voiceOutput" class="w-full" controls></audio>
+          <div class="w-1/2 px-6 flex flex-col items-center">
+            <h2 class="text-xl font-bold mb-4 secondary_color">
+              Secure Copilot
+            </h2>
+            <!-- <div id="voiceAnimation" class="voice-animation mt-10"></div> -->
+            <div id="voice_outer_container">
+              <div id="voice_container">
+                <div class="voice_item">
+                  <img src="../../assets/images/landing-avatar.gif" />
+                </div>
+                <div class="voice_circle"></div>
+                <div class="voice_circle" style="animation-delay: 0s"></div>
+                <div class="voice_circle" style="animation-delay: 1.5s"></div>
+                <div class="voice_circle" style="animation-delay: 3s"></div>
+                <div class="voice_circle" style="animation-delay: 4.5s"></div>
+              </div>
+            </div>
+            <audio id="voiceOutput" class="w-full hidden" controls></audio>
           </div>
         </section>
         <div class="flex justify-center">
