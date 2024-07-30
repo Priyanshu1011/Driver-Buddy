@@ -9,9 +9,9 @@ const path = require("path");
 const url = require("url");
 
 // Global variables
-const NOTIFICATION_TITLE = "Driver Buddy started successfully";
-const NOTIFICATION_BODY = "Driver Buddy application is up and running!";
-const appIconPath = path.join(__dirname, "images/logo-circle.png");
+const NOTIFICATION_TITLE = "Secure Copilot started successfully";
+const NOTIFICATION_BODY = "Secure Copilot application is up and running!";
+const appIconPath = path.join(__dirname, "assets/images/logo-circle.png");
 const appIcon = nativeImage.createFromPath(appIconPath);
 
 function showNotification() {
@@ -26,8 +26,8 @@ let win;
 function createWindow() {
   // Initializes the application window
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     show: false,
     icon: appIcon,
   });
@@ -59,17 +59,19 @@ const driver = () => {
 };
 
 // Calls the driver function when the app is ready to be launched
-app.whenReady().then(driver);
+app.whenReady().then(() => {
+  driver();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+});
 
 // Cross-platform differences
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
   }
 });

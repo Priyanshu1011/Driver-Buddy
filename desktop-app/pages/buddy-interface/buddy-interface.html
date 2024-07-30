@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Copilot - Buddy Interface</title>
+    <link rel="stylesheet" href="../../styles/output.css" />
+    <style>
+      /* Add custom styles for the voice animation if necessary */
+      .voice-animation {
+        height: 200px;
+        width: 200px;
+        background: linear-gradient(45deg, #6b7280, #3b82f6, #10b981, #f59e0b);
+        background-size: 400% 400%;
+        animation: gradient 5s ease infinite;
+        border-radius: 50%;
+      }
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="flex flex-col justify-start gap-y-10 bg_grid bg_gradient h-screen px-20 py-6"
+    >
+      <section class="flex flex-col justify-center items-center gap-y-2">
+        <a href="../home/index.html">
+          <img
+            src="../../assets/images/logo.png"
+            alt="logo"
+            class="rounded-full w-[140px]"
+        /></a>
+        <!-- <h1 class="header_color font-semibold text-center text-5xl">
+          Secure Copilot
+        </h1> -->
+      </section>
+      <div class="flex flex-col justify-center gap-y-10 w-full">
+        <!-- <span><a href="../home/index.html" class="button tertiary_color">Back to Home</a></span> -->
+        <h2
+          class="flex flex-row justify-center items-center primary_color text-4xl font-semibold text-center"
+        >
+          Buddy Interface
+        </h2>
+        <section class="flex flex-row justify-center gap-x-10 w-full">
+          <!-- Chatgpt starts -->
+          <!-- <div
+            class="bg-white shadow-lg rounded-lg flex"
+          ></div> -->
+          <!-- Chatgpt ends -->
+
+          <!-- Left side: Live Video [Video Frame] -->
+          <div class="max-w-1/2 p-2">
+            <h2 class="text-xl font-bold mb-4 secondary_color">
+              Live Video Of The Driver
+            </h2>
+            <video
+              id="liveVideo"
+              class="w-2/3 bg-gray-200 rounded-lg"
+              controls
+              width="720"
+              autoplay
+            ></video>
+          </div>
+          <!-- Right side: Voice Visualization and Output [Companion animation for voice output] -->
+          <div class="w-1/2 p-2">
+            <h2 class="text-xl font-bold mb-4 secondary_color">Secure Copilot</h2>
+            <div id="voiceAnimation" class="voice-animation mb-4"></div>
+            <audio id="voiceOutput" class="w-full" controls></audio>
+          </div>
+        </section>
+        <div class="flex justify-center">
+          <a href="../report/report.html"
+            ><button
+              class="button header_color bg-orange-500 px-5 py-2 rounded-xl w-fit"
+            >
+              Generate Report
+            </button></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="./buddy-interface.js"></script>
+  </body>
+</html>

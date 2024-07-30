@@ -1,4 +1,4 @@
-# Driver-Buddy
+# Secure Copilot
 
 ## The Idea
 
@@ -11,7 +11,7 @@ Real-time system to detect driver fatigue or drowsiness and engage the driver in
 
 ## Setup
 
-1. Clone this repository - `git clone https://github.com/Priyanshu1011/Driver-Buddy.git`
+1. Clone this repository - `git clone https://github.com/Priyanshu1011/Secure-Copilot.git`
 2. Navigate to the "/desktop-app" directory - `cd /desktop-app`
 3. Install the dependencies - `npm install`
 4. Run the application in development mode - `npm start`

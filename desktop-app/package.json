@@ -1,5 +1,6 @@
 {
   "name": "desktop-app",
+  "productName": "Secure Copilot",
   "version": "1.0.0",
   "description": "Real-time system to detect driver fatigue or drowsiness and engage the driver in conversation to keep them awake.",
   "main": "main.js",

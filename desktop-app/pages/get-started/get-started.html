@@ -1,32 +1,75 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Driver Buddy - Get Started</title>
+    <title>Secure Copilot - Get Started</title>
     <link rel="stylesheet" href="../../styles/output.css" />
+    <style>
+      .file-label {
+        background-image: url("../../assets/images/voice-animation.gif");
+      }
+    </style>
   </head>
   <body>
     <div
-      class="bg_grid bg_gradient h-screen px-10 py-8 flex flex-col justify-between items-center"
+      class="flex flex-col justify-start gap-y-10 bg_grid bg_gradient h-screen px-20 py-6"
     >
       <section class="flex flex-col justify-center items-center gap-y-2">
-        <img
-          src="../../images/logo.png"
-          alt="logo"
-          class="rounded-full w-[140px]"
-        />
-        <h1 class="header_color font-semibold text-center text-5xl">
-          Driver Buddy
-        </h1>
+        <a href="../home/index.html">
+          <img
+            src="../../assets/images/logo.png"
+            alt="logo"
+            class="rounded-full w-[140px]"
+        /></a>
+        <!-- <h1 class="header_color font-semibold text-center text-5xl">
+          Secure Copilot
+        </h1> -->
       </section>
+      <div class="flex flex-col justify-start">
+        <!-- <span><a href="../home/index.html" class="button tertiary_color">Back to Home</a></span> -->
 
-      <h2 class="primary_color text-xl">Get Started</h2>
-      <div class="flex flex-col gap-y-2">
-        <a href="../home/index.html" class="button tertiary_color w-full">Back to Home</a>
+        <h2
+          class="flex flex-row justify-center items-center primary_color text-4xl font-semibold text-center"
+        >
+          Get Started
+        </h2>
       </div>
+
+      <section class="flex flex-col items-center gap-y-2">
+        <!-- wav/mp3 file input -->
+        <form
+          id="fileUploadForm"
+          action="../buddy-interface/buddy-interface.html"
+          method="post"
+          enctype="multipart/form-data"
+          class="flex flex-col justify-around items-center gap-y-4"
+        >
+          <input
+            type="file"
+            id="audioFileInput"
+            name="audioFile"
+            accept=".wav, .mp3"
+            class="hidden"
+          />
+          <label
+            for="audioFileInput"
+            class="inline-block cursor-pointer rounded-full file-label w-48 h-48 bg-cover"
+          ></label>
+          <p class="secondary_color text-xl">
+            Attach a voice recording of your choice
+          </p>
+          <!-- submit btn -->
+          <button
+            type="submit"
+            class="button header_color bg-orange-500 px-5 py-2 rounded-xl"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
     </div>
 
-    <!-- <script src="./index.js"></script> -->
+    <script src="./get-started.js"></script>
   </body>
 </html>
